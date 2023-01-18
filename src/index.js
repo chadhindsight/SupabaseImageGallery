@@ -12,7 +12,7 @@ const supabase = createClient('https://ahefnrxrupduqwrwinft.supabase.co',
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SessionContextProvider>
+    <SessionContextProvider supabaseClient={supabase}>
       <App />
     </SessionContextProvider>
   </React.StrictMode>
