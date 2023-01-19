@@ -7,6 +7,7 @@ import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 
 function App() {
   const [email, setEmail] = useState("");
+  const user = useUser();
   const supabase = useSupabaseClient();
 
   return (
