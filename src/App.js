@@ -26,7 +26,20 @@ function App() {
   return (
     <Container align="center" className="container-sm mt-4">
       {
-
+        //Negative case
+        <>
+          <h1>Welcome to your Image Wall</h1>
+          <Form>
+            <Form.Group>
+              <Form.Label>Enter an email to sign in with a Supabase Magic Link</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
+        </>
       }
     </Container>
   );
