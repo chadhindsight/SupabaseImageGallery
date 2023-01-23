@@ -12,7 +12,7 @@ function App() {
 
   async function magicLinkLogin() {
     const { data, error } = await supabase.auth.signInWithOtp({
-      email
+      email: email
     })
 
     if (error) {
@@ -25,11 +25,10 @@ function App() {
 
   return (
     <Container align="center" className="container-sm mt-4">
-      {
-        //Negative case
+      {user === null ?
         <>
           <h1>Welcome to your Image Wall</h1>
-          <Form>
+          <Form onSubmit={() => magicLinkLogin()}>
             <Form.Group className="mb-3" style={{ maxWidth: "500px" }}>
               <Form.Label>Enter an email to sign in with a Supabase Magic Link</Form.Label>
               <Form.Control
@@ -38,8 +37,12 @@ function App() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
-            <Button variant="primary">Get Magic Link</Button>
+            <Button variant="primary" onClick={() => magicLinkLogin()}>Get Magic Link</Button>
           </Form>
+        </>
+        :
+        <>
+          <h1>Your Image Wall </h1>
         </>
       }
     </Container>
