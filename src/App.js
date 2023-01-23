@@ -30,7 +30,7 @@ function App() {
         <>
           <h1>Welcome to your Image Wall</h1>
           <Form>
-            <Form.Group>
+            <Form.Group className="mb-3" style={{ maxWidth: "500px" }}>
               <Form.Label>Enter an email to sign in with a Supabase Magic Link</Form.Label>
               <Form.Control
                 type="email"
@@ -38,6 +38,7 @@ function App() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
+            <Button variant="primary">Get Magic Link</Button>
           </Form>
         </>
       }
