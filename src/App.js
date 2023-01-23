@@ -23,6 +23,9 @@ function App() {
     }
   }
 
+  async function signUserOut() {
+    const { error } = await supabase.auth.signOut();
+  }
   return (
     <Container align="center" className="container-sm mt-4">
       {user === null ?
@@ -43,6 +46,8 @@ function App() {
         :
         <>
           <h1>Your Image Wall </h1>
+          <p><strong>Current user:</strong> {user.email}</p>
+          <Button onClick={() => signUserOut()}>Sign Out</Button>
         </>
       }
     </Container>
