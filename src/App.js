@@ -46,7 +46,7 @@ function App() {
         :
         <>
           <h1>Your Image Wall </h1>
-          <p><strong>Current user:</strong> {user.email}</p>
+          <p><strong>Current user:</strong> {user.email} is logged in</p>
           <Button onClick={() => signUserOut()}>Sign Out</Button>
         </>
       }
