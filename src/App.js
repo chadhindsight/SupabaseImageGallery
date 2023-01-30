@@ -1,13 +1,16 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import './App.css';
-import { Container, Form, Button, FormControl } from 'react-bootstrap';
+import { Container, Form, Button, FormControl, Row, Col, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { v4 as uuidv4 } from 'uuid';
 
+const CDNURL = "https://ahefnrxrupduqwrwinft.supabase.co/storage/v1/object/public/images";
+
 function App() {
   const [email, setEmail] = useState("");
+  const [images, setImages] = useState([]);
   const user = useUser();
   const supabase = useSupabaseClient();
 
@@ -88,6 +91,22 @@ function App() {
           </Form.Group>
           <hr />
           <h3>Your Images</h3>
+          <Row xs={1} md={3} className="g-4">
+            {
+              images.map(image => {
+                return (
+                  <Col key={`${CDNURL}${user.id}/${image.name}`}>
+                    <Card>
+                      <Card.Img variant="top" src={`${CDNURL}${user.id}/${image.name}`} />
+                      <Card.Body>
+                        {/* <Button variant="danger" onClick={}>Delete Image</Button> */}
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                )
+              })
+            }
+          </Row>
         </>
       }
     </Container>
