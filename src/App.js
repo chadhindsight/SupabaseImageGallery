@@ -4,12 +4,30 @@ import './App.css';
 import { Container, Form, Button, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [email, setEmail] = useState("");
   const user = useUser();
   const supabase = useSupabaseClient();
 
+  async function getImages() {
+    const { data, error } = await supabase
+      .storage
+      .from('images')
+      .list(`${user?.id}/`, {
+        limit: 100,
+        offset: 0,
+        sortBy: { column: "name", order: "asc" }
+      });
+
+    if (data !== null) {
+      setImages(data)
+    } else {
+      console.log(error)
+    }
+
+  }
   async function magicLinkLogin() {
     const { data, error } = await supabase.auth.signInWithOtp({
       email: email
@@ -26,6 +44,22 @@ function App() {
   async function signUserOut() {
     const { error } = await supabase.auth.signOut();
   }
+
+  async function uploadImage(event) {
+    let file = event.target.files[0];
+
+    const { data, error } = await supabase
+      .storage
+      .from('images')
+      .upload(`${user.id}/${uuidv4()}`, file)
+
+    if (data) {
+      getImages()
+    } else {
+      console.log(error)
+    }
+  }
+
   return (
     <Container align="center" className="container-sm mt-4">
       {user === null ?
