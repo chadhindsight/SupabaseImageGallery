@@ -31,6 +31,13 @@ function App() {
     }
 
   }
+
+  useEffect(() => {
+    if (user) {
+      getImages()
+    }
+  }, [user]);
+
   async function magicLinkLogin() {
     const { data, error } = await supabase.auth.signInWithOtp({
       email: email
