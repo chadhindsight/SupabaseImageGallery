@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import './App.css';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 
@@ -48,6 +48,12 @@ function App() {
           <h1>Your Image Wall </h1>
           <p><strong>Current user:</strong> {user.email} is logged in</p>
           <Button onClick={() => signUserOut()}>Sign Out</Button>
+          <p>Choose a file to be uploaded to your gallery</p>
+          <Form.Group className="mb-3" style={{ maxWidth: "500px" }}>
+            <Form.Control type="file" accept="image/png" onChange={(e) => uploadImage(e)} />
+          </Form.Group>
+          <hr />
+          <h3>Your Images</h3>
         </>
       }
     </Container>
