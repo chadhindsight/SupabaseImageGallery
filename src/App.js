@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { v4 as uuidv4 } from 'uuid';
 
-const CDNURL = "https://ahefnrxrupduqwrwinft.supabase.co/storage/v1/object/public/images";
+const CDNURL = "https://ahefnrxrupduqwrwinft.supabase.co/storage/v1/object/public/images/";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -25,10 +25,8 @@ function App() {
       });
 
     if (data !== null) {
-      console.log('images dem set')
       setImages(data)
     } else {
-      console.log('images dem not set')
       console.log(error)
     }
 
