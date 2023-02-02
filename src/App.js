@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import './App.css';
-import { Container, Form, Button, FormControl, Row, Col, Card } from 'react-bootstrap';
+import { Container, Form, Button, Row, Col, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { v4 as uuidv4 } from 'uuid';
