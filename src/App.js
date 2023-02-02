@@ -18,15 +18,17 @@ function App() {
     const { data, error } = await supabase
       .storage
       .from('images')
-      .list(`${user?.id}/`, {
+      .list(user?.id + "/", {
         limit: 100,
         offset: 0,
         sortBy: { column: "name", order: "asc" }
       });
 
     if (data !== null) {
+      console.log('images dem set')
       setImages(data)
     } else {
+      console.log('images dem not set')
       console.log(error)
     }
 
@@ -62,11 +64,20 @@ function App() {
       .storage
       .from('images')
       .upload(`${user.id}/${uuidv4()}`, file)
-
+    console.log(data)
     if (data) {
       getImages()
     } else {
       console.log(error)
+    }
+  }
+  async function deleteImage(imageName) {
+    const { error } = await supabase.storage.from('images').remove([user.id + "/" + imageName])
+
+    if (error) {
+      alert(error)
+    } else {
+      getImages()
     }
   }
 
@@ -106,7 +117,7 @@ function App() {
                     <Card>
                       <Card.Img variant="top" src={`${CDNURL}${user.id}/${image.name}`} />
                       <Card.Body>
-                        {/* <Button variant="danger" onClick={}>Delete Image</Button> */}
+                        <Button variant="danger" onClick={() => deleteImage(image.name)}>Delete Image</Button>
                       </Card.Body>
                     </Card>
                   </Col>
