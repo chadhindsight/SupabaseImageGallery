@@ -7,7 +7,7 @@ import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { v4 as uuidv4 } from 'uuid';
 
 const CDNURL = "https://ahefnrxrupduqwrwinft.supabase.co/storage/v1/object/public/images/";
-// one more time
+
 function App() {
   const [email, setEmail] = useState("");
   const [images, setImages] = useState([]);
