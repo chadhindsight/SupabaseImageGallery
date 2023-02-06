@@ -13,7 +13,7 @@ function App() {
   const [images, setImages] = useState([]);
   const user = useUser();
   const supabase = useSupabaseClient();
-  // We caa done
+  // Get images
   async function getImages() {
     const { data, error } = await supabase
       .storage
