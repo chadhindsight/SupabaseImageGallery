@@ -7,7 +7,9 @@ import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { v4 as uuidv4 } from 'uuid';
 
 const CDNURL = "https://ahefnrxrupduqwrwinft.supabase.co/storage/v1/object/public/images/";
+const beans = "https://pokeapi.co/api/v2/pokemon/ditto";
 
+fetch(beans).then(res => res.json()).then((data) => console.log(data.stats));
 function App() {
   const [email, setEmail] = useState("");
   const [images, setImages] = useState([]);
