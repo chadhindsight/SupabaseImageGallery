@@ -5,7 +5,7 @@ import App from './App';
 import { createClient } from '@supabase/supabase-js';
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import reportWebVitals from './reportWebVitals';
-
+// still here :(
 const supabase = createClient('https://ahefnrxrupduqwrwinft.supabase.co',
   process.env.REACT_APP_API_KEY)
 
