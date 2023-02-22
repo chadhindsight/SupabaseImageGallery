@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 
 const supabase = createClient('https://ahefnrxrupduqwrwinft.supabase.co',
   process.env.REACT_APP_API_KEY)
-// dsfsdfjsdl
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
