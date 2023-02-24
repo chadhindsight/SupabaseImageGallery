@@ -117,7 +117,7 @@ function App() {
                     <Card>
                       <Card.Img variant="top" src={`${CDNURL}${user.id}/${image.name}`} />
                       <Card.Body>
-                        <Button variant="danger" onClick={() => deleteImage(image.name)}>Delete Current Image</Button>
+                        <Button variant="danger" onClick={() => deleteImage(image.name)}>Delete Image</Button>
                       </Card.Body>
                     </Card>
                   </Col>
