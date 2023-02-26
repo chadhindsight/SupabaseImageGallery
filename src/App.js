@@ -101,7 +101,7 @@ function App() {
         :
         <>
           <h1>Your Image Wall </h1>
-          <p><strong>Current user:</strong> {user.email} is logged in</p>
+          <p><strong>Current user:</strong> {user.email} is currently logged in</p>
           <Button onClick={() => signUserOut()}>Sign Out</Button>
           <p>Choose a file to be uploaded to your gallery</p>
           <Form.Group className="mb-3" style={{ maxWidth: "500px" }}>
